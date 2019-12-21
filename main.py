@@ -152,15 +152,16 @@ class SudokuSolver:
 
     def run(self):
         empties = BoardGenerator.GenerateEmpties(self.boardAsString)
+        print('Empties',empties)
         constants = BoardGenerator.GenerateConstants(self.boardAsString)
-        newKey = BoardGenerator.GenerateNewKey(self.boardAsString)
-        
+        print('Constants',constants)
+        newKey = BoardGenerator.GenerateNewKey(empties)
+        print('Key',newKey)
+
         board = BoardGenerator.applyKeyToConstants(newKey,constants)
-        
+        print(newKey,constants, board)
         BoardGenerator.isBoardValid(board)
 
-        print(empties)
-        print(constants)
 
         # Get Empties
         # Get Constants
