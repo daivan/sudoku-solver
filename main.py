@@ -5,7 +5,7 @@
 #import classes.BoardGenerator as BoardGenerator
 from functions import *
 
-# Get Rows
+
 # Get Columns
 # Get Boxes
 
@@ -15,8 +15,15 @@ from functions import *
 board = '901300000000250068068004000023060040007030010086010057619043072040597000070000400'
 
 solutions = getNumberOfEmpties(board)
+rows=getRows(board)
+#print(rows)
 
-#solutions = 10
+columns=getColumns(board)
+#print(columns)
+
+boxes=getBoxes(board)
+print(boxes)
+
 print('Number of solutions:', solutions**9)
 
 # Get Empties
