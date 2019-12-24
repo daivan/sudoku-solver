@@ -1,46 +1,43 @@
 # https://sudokusolver.app/
 # export, include the string into the constructor
 
-from array import *
-from textwrap import wrap
+#from array import *
 #import classes.BoardGenerator as BoardGenerator
-import classes.BoardGenerator as BoardGenerator
+from functions import *
 
+# Get Rows
+# Get Columns
+# Get Boxes
 
-class SudokuSolver:
+# Is board valid
 
-    def __init__(self, boardAsString):
-       self.boardAsString = boardAsString
+# Get number of answers
+board = '901300000000250068068004000023060040007030010086010057619043072040597000070000400'
 
-    def run(self):
+solutions = getNumberOfEmpties(board)
 
-        # Get Empties
-        newKey = BoardGenerator.GenerateEmpties(self.boardAsString)
-        print('Empties',newKey)
+#solutions = 10
+print('Number of solutions:', solutions**9)
 
-        # Get Constants
-        constants = BoardGenerator.GenerateConstants(self.boardAsString)
-        print('Constants',constants)
+# Get Empties
 
-        while True:
-            # Generate New Key from newKey
-            newKey = BoardGenerator.GenerateNewKey(newKey)
-            print('Key',newKey)
+#print('Empties',newKey)
 
-            # Apply Key to Constants
-            board = BoardGenerator.applyKeyToConstants(newKey,constants)
-            print(newKey,constants, board)
+# Get Constants
 
-            # Check if board is valid
-            if(BoardGenerator.isBoardValid(board)):
-                # If valid HORAY its been solved
-                print('Horay you did it')
-                print(board)
-                break
-                # Else go back go Generate ...
+#print('Constants',constants)
 
+# while True:
+    # Generate New Key from newKey
     
+    #print('Key',newKey)
 
-solution = SudokuSolver("603200059010400263059030410002160090801504007000809005067002000100307080000040000")
-solution.run()
+    # Apply Key to Constants
+    
+    #print(newKey,constants, board)
 
+    # Check if board is valid
+    
+        # If valid HORAY its been solved
+        #print('Horay you did it')
+        # Else go back go Generate ...
