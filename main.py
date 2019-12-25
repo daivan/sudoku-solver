@@ -15,6 +15,7 @@ from functions import *
 board = '901300000000250068068004000023060040007030010086010057619043072040597000070000400'
 
 solutions = getNumberOfEmpties(board)
+
 rows=getRows(board)
 #print(rows)
 
@@ -22,7 +23,15 @@ columns=getColumns(board)
 #print(columns)
 
 boxes=getBoxes(board)
-print(boxes)
+#print(boxes)
+
+boardAsList = getBoardAsList(board)
+
+for index,value in enumerate(boardAsList):
+    print(getRowByIndex(index))
+    print(getColumnByIndex(index))
+    print(getBoxByIndex(index))
+
 
 print('Number of solutions:', solutions**9)
 
