@@ -28,16 +28,18 @@ boxes=getBoxes(board)
 boardAsList = getBoardAsList(board)
 sum = 1
 for index,value in enumerate(boardAsList):
-    r=rows[getRowByIndex(index)]
-    c=columns[getColumnByIndex(index)]
-    b=boxes[getBoxByIndex(index)]
-    print(index, reverseOptionsOnList(mergeRowColumnBoxToList(r,c,b)))
-    sum=sum*len(reverseOptionsOnList(mergeRowColumnBoxToList(r,c,b)))
-    print(sum)
+    if value==0:
+        r=rows[getRowByIndex(index)]
+        c=columns[getColumnByIndex(index)]
+        b=boxes[getBoxByIndex(index)]
+        print(index, reverseOptionsOnList(mergeRowColumnBoxToList(r,c,b)))
+        sum=sum*len(reverseOptionsOnList(mergeRowColumnBoxToList(r,c,b)))
+        print(value)
     
-
-print('Number of solutions:', 9**solutions)
-print('Number of solutions:', sum)
+print('Without filter')
+print('NR of solutions:', 9**solutions)
+print('With filter')
+print('NR of solutions:', sum)
 
 # Get Empties
 
