@@ -36,7 +36,7 @@ for index,value in enumerate(boardAsList):
     print(sum)
     
 
-print('Number of solutions:', solutions**9)
+print('Number of solutions:', 9**solutions)
 print('Number of solutions:', sum)
 
 # Get Empties
