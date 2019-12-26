@@ -90,3 +90,44 @@ def getBoxByIndex(index):
     for box_id,n in enumerate([0,3,6,27,30,33,54,57,60]):
         if index == n+0 or index == n+1 or index == n+2 or index == n+9 or index == n+10 or index == n+11 or index == n+18 or index == n+19 or index == n+20:
             return box_id
+
+def mergeRowColumnBoxToList(row,column,box):
+    first_list = row
+    second_list = column
+    third_list = box
+
+    #in_first = set(first_list)
+    #in_second = set(second_list)
+    #in_third = set(third_list)
+
+    merged = [*row , *column , *box]
+    merged.sort()
+    return listToUnique(merged)
+    #result = first_list + list(in_second_but_not_in_first)
+    #return result  # Prints [1, 2, 2, 5, 9, 7]
+    #pass
+
+def listToUnique(listWithDuplicates):
+    return list(set(listWithDuplicates))
+    first_list = row
+    second_list = column
+    third_list = box
+
+    #in_first = set(first_list)
+    #in_second = set(second_list)
+    #in_third = set(third_list)
+
+    merged = [*row , *column , *box]
+    merged.sort()
+    return merged
+    #result = first_list + list(in_second_but_not_in_first)
+    #return result  # Prints [1, 2, 2, 5, 9, 7]
+    #pass
+
+def reverseOptionsOnList(reversableList):
+
+    output = []
+    for n in range(1,10):
+        if not n in reversableList:
+            output.append(n)
+    return output

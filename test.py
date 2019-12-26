@@ -73,6 +73,31 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(getBoxByIndex(80), 8, "same row")
         pass
 
+        
+    def test_mergeRowColumnBoxToList(self):
+        row = [1,2,4,5,6,7,8,9]
+        column=[]
+        box=[]
+        
+        self.assertCountEqual(mergeRowColumnBoxToList(row,column,box), [1,2,4,5,6,7,8,9], "same row")
+
+        row = [1,2,2,2,4,5,6,7,8]
+        column = [2,3,4,5]
+        box = [2,3,4,5]
+
+        self.assertEqual(mergeRowColumnBoxToList(row,column,box), [1,2,3,4,5,6,7,8], "same row")
+
+        pass
+
+    def test_listToUnique(self):
+        listWithDuplicates=[1,1,2,2,3,5,6,2,1,1,1,1]
+        self.assertEqual(listToUnique(listWithDuplicates), [1,2,3,5,6], "same row")
+
+    def test_reversableList(self):
+        reversableList=[1,2,3,5,6]
+        self.assertEqual(reverseOptionsOnList(reversableList), [4,7,8,9], "same row")
+
+
 if __name__ == '__main__':
     unittest.main()
 
