@@ -15,7 +15,7 @@ board = '20000000007050293800800000032000000070005040000420001300240708900902060
 #newBoard = singlePossibilityRule(board)
 
 newBoard = fullSinglePossibilityRule(board)
-newBoard = hiddenSingle(newBoard)
+newBoard = fullHiddenSingle(newBoard)
 
 print(newBoard)
 for index,n in enumerate(newBoard):

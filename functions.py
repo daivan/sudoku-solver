@@ -264,4 +264,11 @@ def hiddenSingle(board):
                 BetterBoard=setNewValueInBoard(BetterBoard, index, newValue)
                 continue
 
-    return BetterBoard    
+    return BetterBoard
+
+def fullHiddenSingle(board):
+    
+    while board!=hiddenSingle(board):
+        board=hiddenSingle(board)
+    
+    return board
