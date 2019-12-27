@@ -71,7 +71,15 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(getColumnByIndex(6), 6, "same row")
         self.assertEqual(getColumnByIndex(7), 7, "same row")
         self.assertEqual(getColumnByIndex(8), 8, "same row")
-        
+        self.assertEqual(getColumnByIndex(9), 0, "same row")
+        self.assertEqual(getColumnByIndex(10), 1, "same row")
+        self.assertEqual(getColumnByIndex(11), 2, "same row")
+        self.assertEqual(getColumnByIndex(12), 3, "same row")
+        self.assertEqual(getColumnByIndex(13), 4, "same row")
+        self.assertEqual(getColumnByIndex(14), 5, "same row")
+        self.assertEqual(getColumnByIndex(15), 6, "same row")
+        self.assertEqual(getColumnByIndex(16), 7, "same row")
+        self.assertEqual(getColumnByIndex(17), 8, "same row")
         
     def test_getBoxByIndex(self):
         
@@ -156,6 +164,40 @@ class TestFunctions(unittest.TestCase):
         result = '951386724734259168268174935123765849597438216486912357619843572342597681875621493'
         newboard=singlePossibilityRule(board)
         self.assertEqual(newboard, result, "singlePossibilityRule test 3") 
+
+    def test_getOptionsByIndex(self):
+        board = '203000700176542938008000200325000897701050426004200513002407189009020674407901352'
+        index = 7
+        options = getOptionsByIndex(board,index)
+        self.assertEqual(options, [4, 6], "getOptionsByIndex test 1") 
+
+
+    def test_getAllEmptyFromBoxId(self):
+        board = '203000700176542938008000200325000897701050426004200513002407189009020674407901352'
+        index = 6
+        empties = getAllEmptyFromBoxId(board,index)
+        self.assertEqual(empties, [54, 55, 63, 64, 73], "getAllEmptyFromBoxId test 1") 
+
+    def test_getAllEmptyFromRowId(self):
+        board = '203000700176542938008000200325000897701050426004200513002407189009020674407901352'
+        index = 0
+        empties = getAllEmptyFromRowId(board,index)
+        self.assertEqual(empties, [1, 3, 4, 5, 7, 8], "getAllEmptyFromRowId test 1") 
+
+    def test_getAllEmptyFromColumnId(self):
+        board = '203000700176542938008000200325000897701050426004200513002407189009020674407901352'
+        index = 0
+        empties = getAllEmptyFromColumnId(board,index)
+        self.assertEqual(empties, [18, 45, 54, 63], "getAllEmptyFromColumnId test 1") 
+
+    def test_HiddenSingle(self):
+        board = '203000700176542938008000200325000897701050426004200513002407189009020674407901352'
+        result = '203000700176542938008700200325004897701050426004270513002405189019020674407901352'
+        afterSingle = hiddenSingle(board)
+        self.assertEqual(afterSingle, result, "HiddenSingle test 1") 
+
+
+
 if __name__ == '__main__':
     unittest.main()
 

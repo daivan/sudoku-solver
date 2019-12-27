@@ -132,6 +132,17 @@ def reverseOptionsOnList(reversableList):
             output.append(n)
     return output
 
+def getOptionsByIndex(board, index):
+    rows = getRows(board)
+    columns = getColumns(board)
+    boxes = getBoxes(board)
+    row = rows[getRowByIndex(index)]
+    column = columns[getColumnByIndex(index)]
+    box = boxes[getBoxByIndex(index)]
+    value=mergeRowColumnBoxToList(row,column,box)
+    options=reverseOptionsOnList(value)
+    return options
+
 def setNewValueInBoard(board, index, value):
     
     output = board[:index] + str(value) + board[index+1:]
@@ -139,8 +150,8 @@ def setNewValueInBoard(board, index, value):
 
 def singlePossibilityRule(board):
     if getNumberOfEmpties(board)==0:
-        print('great!')
         return board
+
     rows=getRows(board)
 
     columns=getColumns(board)
@@ -160,5 +171,96 @@ def singlePossibilityRule(board):
         
             if len(options)==1:
                 BetterBoard=setNewValueInBoard(BetterBoard, index, options[0])
-
+    
     return BetterBoard
+
+# Run until singlePossibilityRule cant find anymore
+def fullSinglePossibilityRule(board):
+
+    while board!=singlePossibilityRule(board):
+        board=singlePossibilityRule(board)
+    
+    return board
+
+def getAllEmptyFromBoxId(board, id):
+    boxes=[]
+    for index,n in enumerate(board):
+        if n=='0' and getBoxByIndex(index)==id:
+            boxes.append(index)
+
+    return boxes
+
+def getAllEmptyFromRowId(board, id):
+    rows=[]
+    for index,n in enumerate(board):
+        if n=='0' and getRowByIndex(index)==id:
+            rows.append(index)
+
+    return rows
+
+def getAllEmptyFromColumnId(board, id):
+    columns=[]
+    for index,n in enumerate(board):
+        if n=='0' and getColumnByIndex(index)==id:
+            columns.append(index)
+
+    return columns
+
+
+def checkForHiddenSingleByIndex(board, index, listOfIndexes):
+
+    
+    possibilities = getOptionsByIndex(board,index)
+    allOptions = []
+    for listIndex in listOfIndexes:
+        options=getOptionsByIndex(board,listIndex)
+        allOptions.extend(options)
+
+    numbers = []
+    duplicates = []
+    uniques = []
+    for n in allOptions:
+        if n in numbers:
+            duplicates.append(n)
+        else:
+            numbers.append(n)
+        
+    for n in numbers:
+        if not n in duplicates and n in possibilities:
+            return n
+    
+    return False
+
+def hiddenSingle(board):
+    if getNumberOfEmpties(board)==0:
+        return board
+
+
+    BetterBoard = board
+
+    for index,value in enumerate(BetterBoard):
+    
+        listOfIndexes = getAllEmptyFromBoxId(board,getBoxByIndex(index))
+        newValue = checkForHiddenSingleByIndex(BetterBoard,index,listOfIndexes)
+        if(newValue!=False):
+
+            BetterBoard=setNewValueInBoard(BetterBoard, index, newValue)
+            continue
+
+
+        listOfIndexes = getAllEmptyFromRowId(board,getRowByIndex(index))
+        newValue = checkForHiddenSingleByIndex(BetterBoard,index,listOfIndexes)
+        if(newValue!=False):
+
+            BetterBoard=setNewValueInBoard(BetterBoard, index, newValue)
+            continue
+
+
+        listOfIndexes = getAllEmptyFromColumnId(board,getColumnByIndex(index))
+        newValue = checkForHiddenSingleByIndex(BetterBoard,index,listOfIndexes)
+        if(newValue!=False):
+
+            BetterBoard=setNewValueInBoard(BetterBoard, index, newValue)
+            continue
+
+    return BetterBoard    
