@@ -239,28 +239,29 @@ def hiddenSingle(board):
     BetterBoard = board
 
     for index,value in enumerate(BetterBoard):
-    
-        listOfIndexes = getAllEmptyFromBoxId(board,getBoxByIndex(index))
-        newValue = checkForHiddenSingleByIndex(BetterBoard,index,listOfIndexes)
-        if(newValue!=False):
+        
+        if value == '0':
+            listOfIndexes = getAllEmptyFromBoxId(board,getBoxByIndex(index))
+            newValue = checkForHiddenSingleByIndex(BetterBoard,index,listOfIndexes)
+            if(newValue!=False):
 
-            BetterBoard=setNewValueInBoard(BetterBoard, index, newValue)
-            continue
-
-
-        listOfIndexes = getAllEmptyFromRowId(board,getRowByIndex(index))
-        newValue = checkForHiddenSingleByIndex(BetterBoard,index,listOfIndexes)
-        if(newValue!=False):
-
-            BetterBoard=setNewValueInBoard(BetterBoard, index, newValue)
-            continue
+                BetterBoard=setNewValueInBoard(BetterBoard, index, newValue)
+                continue
 
 
-        listOfIndexes = getAllEmptyFromColumnId(board,getColumnByIndex(index))
-        newValue = checkForHiddenSingleByIndex(BetterBoard,index,listOfIndexes)
-        if(newValue!=False):
+            listOfIndexes = getAllEmptyFromRowId(board,getRowByIndex(index))
+            newValue = checkForHiddenSingleByIndex(BetterBoard,index,listOfIndexes)
+            if(newValue!=False):
+                
+                BetterBoard=setNewValueInBoard(BetterBoard, index, newValue)
+                continue
 
-            BetterBoard=setNewValueInBoard(BetterBoard, index, newValue)
-            continue
+
+            listOfIndexes = getAllEmptyFromColumnId(board,getColumnByIndex(index))
+            newValue = checkForHiddenSingleByIndex(BetterBoard,index,listOfIndexes)
+            if(newValue!=False):
+                
+                BetterBoard=setNewValueInBoard(BetterBoard, index, newValue)
+                continue
 
     return BetterBoard    
