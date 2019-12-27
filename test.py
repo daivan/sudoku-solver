@@ -3,6 +3,19 @@ from functions import *
 
 class TestFunctions(unittest.TestCase):
 
+    def test_getNumberOfEmpties(self):
+        board = '951386724734259168268174935123765849597438216486912357619843572042597681875621403'
+        self.assertEqual(getNumberOfEmpties(board), 2, "getNumberOfEmpties test 1")
+
+        board = '42597681875621443'
+        self.assertEqual(getNumberOfEmpties(board), 0, "getNumberOfEmpties test 2")
+        
+        board = '00000'
+        self.assertEqual(getNumberOfEmpties(board), 5, "getNumberOfEmpties test 3")
+        
+        board = '0110'
+        self.assertEqual(getNumberOfEmpties(board), 2, "getNumberOfEmpties test 4")
+
     def test_getRows(self):
         board = '901300000000250068068004000023060040007030010086010057619043072040597000070000400'
         rows=getRows(board)
@@ -97,7 +110,52 @@ class TestFunctions(unittest.TestCase):
         reversableList=[1,2,3,5,6]
         self.assertEqual(reverseOptionsOnList(reversableList), [4,7,8,9], "same row")
 
+    def test_setNewValueInBoard(self):
+        board = '901300000000250068068004000023060040007030010086010057619043072040597000070000400'
+        result = '951300000000250068068004000023060040007030010086010057619043072040597000070000400'
+        index = 1
+        value = 5
+        newboard=setNewValueInBoard(board,index,value)
+        self.assertEqual(newboard, result, "same row")
+        
+        board = '901300000000250068068004000023060040007030010086010057619043072040597000070000400'
+        result = '901380000000250068068004000023060040007030010086010057619043072040597000070000400'
+        index = 4
+        value = 8
+        newboard=setNewValueInBoard(board,index,value)
+        self.assertEqual(newboard, result, "same row")
 
+        board = '901300000000250068068004000023060040007030010086010057619043072040597000070000400'
+        result = '101300000000250068068004000023060040007030010086010057619043072040597000070000400'
+        index = 0
+        value = 1
+
+        newboard=setNewValueInBoard(board,index,value)
+        self.assertEqual(newboard, result, "same row")
+
+        board = '901300000000250068068004000023060040007030010086010057619043072040597000070000400'
+        result = '901300000000250068068004000023060040007030010086010057619043072040597000070000401'
+        index = 80
+        value = 1
+
+        newboard=setNewValueInBoard(board,index,value)
+        self.assertEqual(newboard, result, "same row")        
+
+    def test_singlePossibilityRule(self):
+        board = '901300000000250068068004000023060040007030010086010057619043072040597000070000400'
+        
+        result = '951300020034250068068074000023060049007030010486010057619843072042597000070000400'
+        newboard=singlePossibilityRule(board)
+        self.assertEqual(newboard, result, "singlePossibilityRule test 1")  
+
+        result = '951380724734250068268074000023760849597030016486910057619843572042597000075020400'
+        newboard=singlePossibilityRule(newboard)
+        self.assertEqual(newboard, result, "singlePossibilityRule test 2")
+                
+        board = '951386724734259168268174935123765849597438216486912357619843572342597681875621493'
+        result = '951386724734259168268174935123765849597438216486912357619843572342597681875621493'
+        newboard=singlePossibilityRule(board)
+        self.assertEqual(newboard, result, "singlePossibilityRule test 3") 
 if __name__ == '__main__':
     unittest.main()
 

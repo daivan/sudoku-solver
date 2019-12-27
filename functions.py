@@ -131,3 +131,34 @@ def reverseOptionsOnList(reversableList):
         if not n in reversableList:
             output.append(n)
     return output
+
+def setNewValueInBoard(board, index, value):
+    
+    output = board[:index] + str(value) + board[index+1:]
+    return output
+
+def singlePossibilityRule(board):
+    if getNumberOfEmpties(board)==0:
+        print('great!')
+        return board
+    rows=getRows(board)
+
+    columns=getColumns(board)
+
+    boxes=getBoxes(board)
+
+    boardAsList = getBoardAsList(board)
+
+    BetterBoard = board
+
+    for index,value in enumerate(boardAsList):
+        if value==0:
+            r=rows[getRowByIndex(index)]
+            c=columns[getColumnByIndex(index)]
+            b=boxes[getBoxByIndex(index)]
+            options = reverseOptionsOnList(mergeRowColumnBoxToList(r,c,b))
+        
+            if len(options)==1:
+                BetterBoard=setNewValueInBoard(BetterBoard, index, options[0])
+
+    return BetterBoard

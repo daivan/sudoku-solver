@@ -26,21 +26,19 @@ boxes=getBoxes(board)
 #print(boxes)
 
 boardAsList = getBoardAsList(board)
-sum = 1
-for index,value in enumerate(boardAsList):
-    if value==0:
-        r=rows[getRowByIndex(index)]
-        c=columns[getColumnByIndex(index)]
-        b=boxes[getBoxByIndex(index)]
-        print(index, reverseOptionsOnList(mergeRowColumnBoxToList(r,c,b)))
-        sum=sum*len(reverseOptionsOnList(mergeRowColumnBoxToList(r,c,b)))
-        print(value)
-    
-print('Without filter')
-print('NR of solutions:', 9**solutions)
-print('With filter')
-print('NR of solutions:', sum)
 
+
+
+newBoard = singlePossibilityRule(board)
+
+for n in range(0,11):
+    newBoard = singlePossibilityRule(newBoard)
+    if(newBoard==singlePossibilityRule(newBoard)):
+        print('hejsan')
+        break
+    print(newBoard)
+
+print(newBoard)
 # Get Empties
 
 #print('Empties',newKey)
