@@ -1,86 +1,23 @@
 # https://sudokusolver.app/
 # export, include the string into the constructor
 
-#from array import *
-#import classes.BoardGenerator as BoardGenerator
-from functions import *
 from solver import *
 
-#testBoard = '090000000000000000000000000000000000000000000000000000000000000000000000000000000'
-
+# Empty Board
+#board = '000000000000000000000000000000000000000000000000000000000000000000000000000000000'
 # Very Easy
-#testBoard = '901300000000250068068004000023060040007030010086010057619043072040597000070000400'
+#board = '700159230305000000000320000001406580040205017507980002400008060050000700080713400'
 # Easy
-#testBoard = '200000000070502938008000000320000000700050400004200013002407089009020604400901052'
+#board = '100036078000050002000270610000300467000160005000090000070049003605002040900583000'
 # Medium
-testBoard = '030600040940075000600038092050000000800006070000000438380024000004000320070009084'
-#newBoard = singlePossibilityRule(board)
+#board = '800001609000897050000400810040000786025708900000030000900000170004080002003200008'
+# Hard
+#board = '600400000020085640007301500006208003830000006005009800090800700000954102000000000'
+# Fiendish
+board = '000000005009460000703005409500070000100006053206008000060017030071050002000009000'
 
-#isBoardPossible(board)
-testBoard = fullSinglePossibilityRule(testBoard)
-testBoard = fullHiddenSingle(testBoard)
+# Try some simple rules first
+board = fullSinglePossibilityRule(board)
+board = fullHiddenSingle(board)
 
-#cleanBoard = newBoard
-
-# start with clean board
-# Get the pointer
-# Index
-# Options
-# Check if board still works
-    # Move forward
-# Else
-    # Try new on the same
-    # If no more
-    # Go back
-    # If no more, update pointer
-
-#allOptions=[]
-#pointer = 0
-#action = 'Init'
-
-
-solve(testBoard)
-
-#while pointer < 0:
-#while pointer<80:
-
-#    if board[pointer]!='0':
-#        print('skipping')
-#        pointer += 1
-#        continue
-
-#    print(board[pointer])
-#    options = getOptionsByIndex(board, pointer)
-#    print(options)
-#    pointer += 1
-    #if(board[pointer]!='0'):
-    #    pointer += 1
-    #    continue
-    #else:
-    #    print(pointer)
-    #    options = getOptionsByIndex(board, pointer)
-    #    for n in options:
-    #        print(options)
-    #        board = setNewValueInBoard(board, pointer, n)
-    #        print(board)
-    #        if isBoardComplete(board):
-    #            print(board)
-    #            break
-    #        if isBoardPossible(board):
-    #            pointer += 1
-    #        else:
-    #            print('crap')
-        
-
-#for index,n in enumerate(testBoard):
-#        options = getOptionsByIndex(newBoard, index)
-#        if n=='0':
-#            allOptions.append(options)
-#        else:
-#            allOptions.append([])
-
-#print(allOptions)
-#allOptions[0].append(1)
-#print(allOptions)
-#tryThisCombination(cleanBoard,allOptions)
-
+solve(board)
