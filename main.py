@@ -14,40 +14,28 @@ from functions import *
 # Medium
 board = '030600040940075000600038092050000000800006070000000438380024000004000320070009084'
 #newBoard = singlePossibilityRule(board)
-
+isBoardPossible(board)
 newBoard = fullSinglePossibilityRule(board)
 newBoard = fullHiddenSingle(newBoard)
 
-print(newBoard)
-#for index,n in enumerate(newBoard):
-#    if n == '0':
-#        options = getOptionsByIndex(newBoard, index)
-        #print(options)
-        #print(index, n)
+cleanBoard = newBoard
 
-#newBoard = hiddenSingle(board)
-#print(newBoard)
+# start with clean board
+# Get the pointer
+# Index
+# Options
+# Check if board still works
+    # Move forward
+# Else
+    # Try new on the same
+    # If no more
+    # Go back
+    # If no more, update pointer
 
-#print(newBoard)
-# Get Empties
+for index,n in enumerate(newBoard):
+    if n == '0':
+        options = getOptionsByIndex(newBoard, index)
+        print(index, options)
+        sum = sum * len(options)
 
-#print('Empties',newKey)
-
-# Get Constants
-
-#print('Constants',constants)
-
-# while True:
-    # Generate New Key from newKey
-    
-    #print('Key',newKey)
-
-    # Apply Key to Constants
-    
-    #print(newKey,constants, board)
-
-    # Check if board is valid
-    
-        # If valid HORAY its been solved
-        #print('Horay you did it')
-        # Else go back go Generate ...
+print('solutions: ',sum)

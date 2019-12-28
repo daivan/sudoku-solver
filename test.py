@@ -198,6 +198,24 @@ class TestFunctions(unittest.TestCase):
 
 
 
+    def test_isBoardPossible(self):
+        board = '203000700176542938008000200325000897701050426004200513002407189009020674407901352'
+        self.assertEqual(isBoardPossible(board), True, "isBoardPossible test 1") 
+
+        # Same box
+        board = '030600040943075000600038092050000000800006070000000438380024000004000320070009084'
+        self.assertEqual(isBoardPossible(board), False, "isBoardPossible test 2") 
+
+        # Same Row
+        board = '030600040940075700600038092050000000800006070000000438380024000004000320070009084'
+        self.assertEqual(isBoardPossible(board), False, "isBoardPossible test 3")
+
+        # Same Column
+        board = '030600040940075000600038092050000000830006070000000438380024000004000320070009084'
+        self.assertEqual(isBoardPossible(board), False, "isBoardPossible test 4") 
+
+
+
 if __name__ == '__main__':
     unittest.main()
 

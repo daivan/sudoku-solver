@@ -272,3 +272,26 @@ def fullHiddenSingle(board):
         board=hiddenSingle(board)
     
     return board
+
+def isBoardPossible(board):
+    
+    for index, number in enumerate(board):
+        if number != '0':
+            # check if number already exists in box
+            boxes=getBoxes(board)
+            box_values=boxes[getBoxByIndex(index)]
+            if box_values.count(int(number))>1:
+                return False
+
+            # check if number already exists in row
+            rows=getRows(board)
+            row_values=rows[getRowByIndex(index)]
+            if row_values.count(int(number))>1:
+                return False
+
+            # check if number already exists in column
+            columns=getColumns(board)
+            column_values=columns[getColumnByIndex(index)]
+            if column_values.count(int(number))>1:
+                return False                
+    return True
