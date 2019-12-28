@@ -1,15 +1,8 @@
 from functions import *
 
-def findEmpty(board):
-    for index,n in enumerate(board):
-        if n == '0':
-            return index
-
-    return None
-
 def solve(board):
 
-    #print(board)
+
     if isBoardComplete(board):
         print(board)
         return True

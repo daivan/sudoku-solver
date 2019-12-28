@@ -296,46 +296,15 @@ def isBoardPossible(board):
                 return False                
     return True
 
-def tryThisCombination(board, options):
-    #print(board)
-    testar = [[1,2,5,7],[], [1,2,5,7,8], [], [], [1, 2], [1, 5, 7, 8], [], [1, 5, 7]]
-    #print(testar)
-    #print(options)
-    tested = []
-    for index,temp in enumerate(testar):
-        if len(temp)>0:
-            pointer = index
-            break
-    print('pointer',pointer)
-
-    testar[pointer]
-    
-    while pointer < 81:
-
-        if len(options[pointer]) == 0:
-            pointer+=1
-            continue
-
-        print(options[pointer])
-
-        pointer+=1
-
-    #TODO här ligger jag
-    for index,temp in enumerate(testar):
-        if len(temp)>0:
-            for temp2 in temp:
-                print(index,temp2)
-                board=setNewValueInBoard(board, index, temp2)
-                if isBoardPossible(board):
-                    # go to next value
-                    break
-                if temp2 == temp[-1]:
-                    print('we are in trouble')
-                    # need to go back to previous
-    #print new
-
 def isBoardComplete(board):
 
     if isBoardPossible(board) and getNumberOfEmpties(board) == 0:
         return True
     return False
+
+def findEmpty(board):
+    for index,n in enumerate(board):
+        if n == '0':
+            return index
+
+    return None
