@@ -16,7 +16,7 @@ from solver import *
 # Fiendish
 board = '000000005009460000703005409500070000100006053206008000060017030071050002000009000'
 
-# Try some simple rules first
+# Try some simple sudoku rules first to clear some easy 0s
 board = fullSinglePossibilityRule(board)
 board = fullHiddenSingle(board)
 

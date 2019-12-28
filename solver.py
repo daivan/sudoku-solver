@@ -1,6 +1,6 @@
 from functions import *
 
-def find_empty(board):
+def findEmpty(board):
     for index,n in enumerate(board):
         if n == '0':
             return index
@@ -9,20 +9,12 @@ def find_empty(board):
 
 def solve(board):
 
-    #find = find_empty(board)
-    #if not find:
-    #    return True
-    #else:
-    #    print(find)
-    
-    print(board)
+    #print(board)
     if isBoardComplete(board):
         print(board)
         return True
     else:
-        find = find_empty(board)
-        #print(find)
-        
+        find = findEmpty(board)       
 
     options = getOptionsByIndex(board, find)
     for i in options:
@@ -34,7 +26,4 @@ def solve(board):
 
             setNewValueInBoard(board, find, 0)
         
-    #print(find_empty(board))
-    #print(board)
-    #print(isBoardPossible(board))
-    
+   
