@@ -10,7 +10,7 @@ def getRows(boardAsString):
     rowsGenerator=[]
     counter = 0
     for c in boardAsString:
-        rowsGenerator.append(int(c))
+        rowsGenerator.append(c)
         counter+=1
         if(counter == 9):
             rows.append(rowsGenerator)
@@ -24,15 +24,15 @@ def getColumns(boardAsString):
         
     for n in range(0,9):
         columnGenerator=[]
-        columnGenerator.append(int(boardAsString[n+0]))
-        columnGenerator.append(int(boardAsString[n+9]))
-        columnGenerator.append(int(boardAsString[n+18]))
-        columnGenerator.append(int(boardAsString[n+27]))
-        columnGenerator.append(int(boardAsString[n+36]))
-        columnGenerator.append(int(boardAsString[n+45]))
-        columnGenerator.append(int(boardAsString[n+54]))
-        columnGenerator.append(int(boardAsString[n+63]))
-        columnGenerator.append(int(boardAsString[n+72]))
+        columnGenerator.append(boardAsString[n+0])
+        columnGenerator.append(boardAsString[n+9])
+        columnGenerator.append(boardAsString[n+18])
+        columnGenerator.append(boardAsString[n+27])
+        columnGenerator.append(boardAsString[n+36])
+        columnGenerator.append(boardAsString[n+45])
+        columnGenerator.append(boardAsString[n+54])
+        columnGenerator.append(boardAsString[n+63])
+        columnGenerator.append(boardAsString[n+72])
         columns.append(columnGenerator)
     return columns
 
@@ -42,15 +42,15 @@ def getBoxes(boardAsString):
         
     for n in [0,3,6,27,30,33,54,57,60]:
         boxesGenerator=[]
-        boxesGenerator.append(int(boardAsString[n+0]))
-        boxesGenerator.append(int(boardAsString[n+1]))
-        boxesGenerator.append(int(boardAsString[n+2]))
-        boxesGenerator.append(int(boardAsString[n+9]))
-        boxesGenerator.append(int(boardAsString[n+10]))
-        boxesGenerator.append(int(boardAsString[n+11]))
-        boxesGenerator.append(int(boardAsString[n+18]))
-        boxesGenerator.append(int(boardAsString[n+19]))
-        boxesGenerator.append(int(boardAsString[n+20]))
+        boxesGenerator.append(boardAsString[n+0])
+        boxesGenerator.append(boardAsString[n+1])
+        boxesGenerator.append(boardAsString[n+2])
+        boxesGenerator.append(boardAsString[n+9])
+        boxesGenerator.append(boardAsString[n+10])
+        boxesGenerator.append(boardAsString[n+11])
+        boxesGenerator.append(boardAsString[n+18])
+        boxesGenerator.append(boardAsString[n+19])
+        boxesGenerator.append(boardAsString[n+20])
         boxes.append(boxesGenerator)
     return boxes
 
@@ -281,19 +281,19 @@ def isBoardPossible(board):
             # check if number already exists in box
             boxes=getBoxes(board)
             box_values=boxes[getBoxByIndex(index)]
-            if box_values.count(int(number))>1:
+            if box_values.count(number)>1:
                 return False
 
             # check if number already exists in row
             rows=getRows(board)
             row_values=rows[getRowByIndex(index)]
-            if row_values.count(int(number))>1:
+            if row_values.count(number)>1:
                 return False
 
             # check if number already exists in column
             columns=getColumns(board)
             column_values=columns[getColumnByIndex(index)]
-            if column_values.count(int(number))>1:
+            if column_values.count(number)>1:
                 return False                
     return True
 
