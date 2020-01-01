@@ -1,57 +1,28 @@
 def getNumberOfEmpties(boardAsString):
     counter = 0
     for c in boardAsString:
-        if c=='0':
+        if c==0:
             counter+=1
-    return int(counter)
+    return counter
 
 def getRows(boardAsString):
     rows = []
-    rowsGenerator=[]
-    counter = 0
-    for c in boardAsString:
-        rowsGenerator.append(int(c))
-        counter+=1
-        if(counter == 9):
-            rows.append(rowsGenerator)
-            rowsGenerator=[]
-            counter=0
+    for n in [0,9,18,27,36,45,54,63,72]:
+        rows.append([boardAsString[n+0],boardAsString[n+1],boardAsString[n+2],boardAsString[n+3],boardAsString[n+4],boardAsString[n+5],boardAsString[n+6],boardAsString[n+7],boardAsString[n+8]])
     return rows
 
 def getColumns(boardAsString):
 
     columns = []
-        
     for n in range(0,9):
-        columnGenerator=[]
-        columnGenerator.append(int(boardAsString[n+0]))
-        columnGenerator.append(int(boardAsString[n+9]))
-        columnGenerator.append(int(boardAsString[n+18]))
-        columnGenerator.append(int(boardAsString[n+27]))
-        columnGenerator.append(int(boardAsString[n+36]))
-        columnGenerator.append(int(boardAsString[n+45]))
-        columnGenerator.append(int(boardAsString[n+54]))
-        columnGenerator.append(int(boardAsString[n+63]))
-        columnGenerator.append(int(boardAsString[n+72]))
-        columns.append(columnGenerator)
+        columns.append([boardAsString[n+0],boardAsString[n+9],boardAsString[n+18],boardAsString[n+27],boardAsString[n+36],boardAsString[n+45],boardAsString[n+54],boardAsString[n+63],boardAsString[n+72]])
     return columns
 
 def getBoxes(boardAsString):
     
     boxes = []
-        
     for n in [0,3,6,27,30,33,54,57,60]:
-        boxesGenerator=[]
-        boxesGenerator.append(int(boardAsString[n+0]))
-        boxesGenerator.append(int(boardAsString[n+1]))
-        boxesGenerator.append(int(boardAsString[n+2]))
-        boxesGenerator.append(int(boardAsString[n+9]))
-        boxesGenerator.append(int(boardAsString[n+10]))
-        boxesGenerator.append(int(boardAsString[n+11]))
-        boxesGenerator.append(int(boardAsString[n+18]))
-        boxesGenerator.append(int(boardAsString[n+19]))
-        boxesGenerator.append(int(boardAsString[n+20]))
-        boxes.append(boxesGenerator)
+        boxes.append([boardAsString[n+0],boardAsString[n+1],boardAsString[n+2],boardAsString[n+9],boardAsString[n+10],boardAsString[n+11],boardAsString[n+18],boardAsString[n+19],boardAsString[n+20]])
     return boxes
 
 def getBoardAsList(boardAsString):
@@ -81,15 +52,48 @@ def getRowByIndex(index):
         return 8
 
 def getColumnByIndex(index):
-    for n in range (0, 9):
-        if index == 0+n or index == 9+n or index == 18+n or index == 27+n or index == 36+n or index == 45+n or index == 54+n or index == 63+n or index == 72+n:
-            return n
-    return 0
+    if index in [0,9,18,27,36,45,54,63,72]:
+        return 0
+    elif index in [1,10,19,28,37,46,55,64,73]:
+        return 1
+    elif index in [2,11,20,29,38,47,56,65,74]:
+        return 2            
+    elif index in [3,12,21,30,39,48,57,66,75]:
+        return 3
+    elif index in [4,13,22,31,40,49,58,67,76]:
+        return 4
+    elif index in [5,14,23,32,41,50,59,68,77]:
+        return 5
+    elif index in [6,15,24,33,42,51,60,69,78]:
+        return 6
+    elif index in [7,16,25,34,43,52,61,70,79]:
+        return 7
+    elif index in [8,17,26,35,44,53,62,71,80]:
+        return 8 
 
 def getBoxByIndex(index):
-    for box_id,n in enumerate([0,3,6,27,30,33,54,57,60]):
-        if index == n+0 or index == n+1 or index == n+2 or index == n+9 or index == n+10 or index == n+11 or index == n+18 or index == n+19 or index == n+20:
-            return box_id
+    #for box_id,n in enumerate([0,3,6,27,30,33,54,57,60]):
+    #    if index == n+0 or index == n+1 or index == n+2 or index == n+9 or index == n+10 or index == n+11 or index == n+18 or index == n+19 or index == n+20:
+    #        return box_id
+    if index in [0,1,2,9,10,11,18,19,20]:
+        return 0
+    elif index in [3,4,5,12,13,14,21,22,23]:
+        return 1
+    elif index in [6,7,8,15,16,17,24,25,26]:
+        return 2
+    elif index in [27,28,29,36,37,38,45,46,47]:
+        return 3
+    elif index in [30,31,32,39,40,41,48,49,50]:
+        return 4
+    elif index in [33,34,35,42,43,44,51,52,53]:
+        return 5
+    elif index in [54,55,56,63,64,65,72,73,74]:
+        return 6
+    elif index in [57,58,59,66,67,68,75,76,77]:
+        return 7
+    elif index in [60,61,62,69,70,71,78,79,80]:    
+        return 8
+    
 
 def mergeRowColumnBoxToList(row,column,box):
     first_list = row
@@ -145,8 +149,9 @@ def getOptionsByIndex(board, index):
 
 def setNewValueInBoard(board, index, value):
     
-    output = board[:index] + str(value) + board[index+1:]
-    return output
+    #output = board[:index] + str(value) + board[index+1:]
+    board[index] = value
+    return board
 
 def singlePossibilityRule(board):
     if getNumberOfEmpties(board)==0:
@@ -185,7 +190,7 @@ def fullSinglePossibilityRule(board):
 def getAllEmptyFromBoxId(board, id):
     boxes=[]
     for index,n in enumerate(board):
-        if n=='0' and getBoxByIndex(index)==id:
+        if n==0 and getBoxByIndex(index)==id:
             boxes.append(index)
 
     return boxes
@@ -193,7 +198,7 @@ def getAllEmptyFromBoxId(board, id):
 def getAllEmptyFromRowId(board, id):
     rows=[]
     for index,n in enumerate(board):
-        if n=='0' and getRowByIndex(index)==id:
+        if n==0 and getRowByIndex(index)==id:
             rows.append(index)
 
     return rows
@@ -201,7 +206,7 @@ def getAllEmptyFromRowId(board, id):
 def getAllEmptyFromColumnId(board, id):
     columns=[]
     for index,n in enumerate(board):
-        if n=='0' and getColumnByIndex(index)==id:
+        if n==0 and getColumnByIndex(index)==id:
             columns.append(index)
 
     return columns
@@ -240,7 +245,7 @@ def hiddenSingle(board):
 
     for index,value in enumerate(BetterBoard):
         
-        if value == '0':
+        if value == 0:
             listOfIndexes = getAllEmptyFromBoxId(board,getBoxByIndex(index))
             newValue = checkForHiddenSingleByIndex(BetterBoard,index,listOfIndexes)
             if(newValue!=False):
@@ -275,36 +280,37 @@ def fullHiddenSingle(board):
 
 def isBoardPossible(board):
     
+    boxes=getBoxes(board)
+    rows=getRows(board)
+    columns=getColumns(board)
+
     for index, number in enumerate(board):
-        if number != '0':
+        if number != 0:
             # check if number already exists in box
-            boxes=getBoxes(board)
             box_values=boxes[getBoxByIndex(index)]
-            if box_values.count(int(number))>1:
+            if box_values.count(number)>1:
                 return False
 
             # check if number already exists in row
-            rows=getRows(board)
             row_values=rows[getRowByIndex(index)]
-            if row_values.count(int(number))>1:
+            if row_values.count(number)>1:
                 return False
 
             # check if number already exists in column
-            columns=getColumns(board)
             column_values=columns[getColumnByIndex(index)]
-            if column_values.count(int(number))>1:
+            if column_values.count(number)>1:
                 return False                
     return True
 
 def isBoardComplete(board):
 
-    if isBoardPossible(board) and getNumberOfEmpties(board) == 0:
+    if 0 not in board and isBoardPossible(board):
         return True
     return False
 
 def findEmpty(board):
     for index,n in enumerate(board):
-        if n == '0':
+        if n == 0:
             return index
 
     return None

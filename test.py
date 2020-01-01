@@ -5,27 +5,33 @@ class TestFunctions(unittest.TestCase):
 
     def test_getNumberOfEmpties(self):
         board = '951386724734259168268174935123765849597438216486912357619843572042597681875621403'
+        board = getBoardAsList(board)
         self.assertEqual(getNumberOfEmpties(board), 2, "getNumberOfEmpties test 1")
 
         board = '42597681875621443'
+        board = getBoardAsList(board)
         self.assertEqual(getNumberOfEmpties(board), 0, "getNumberOfEmpties test 2")
         
         board = '00000'
+        board = getBoardAsList(board)
         self.assertEqual(getNumberOfEmpties(board), 5, "getNumberOfEmpties test 3")
         
         board = '0110'
+        board = getBoardAsList(board)
         self.assertEqual(getNumberOfEmpties(board), 2, "getNumberOfEmpties test 4")
 
     def test_getRows(self):
         board = '901300000000250068068004000023060040007030010086010057619043072040597000070000400'
+        board = getBoardAsList(board)
         rows=getRows(board)
-        self.assertCountEqual(rows[0], [9,0,1,3,0,0,0,0,0], "same array")
-        self.assertCountEqual(rows[1], [0,0,0,2,5,0,0,6,8], "same array")
-        self.assertCountEqual(rows[8], [0,7,0,0,0,0,4,0,0], "same array")
+        self.assertCountEqual(rows[0], [9,0,1,3,0,0,0,0,0], "getRows 1")
+        self.assertCountEqual(rows[1], [0,0,0,2,5,0,0,6,8], "getRows 2")
+        self.assertCountEqual(rows[8], [0,7,0,0,0,0,4,0,0], "getRows 3")
 
 
     def test_getColumns(self):
         board = '901300000000250068068004000023060040007030010086010057619043072040597000070000400'
+        board = getBoardAsList(board)
         rows=getColumns(board)
         self.assertCountEqual(rows[0], [9,0,0,0,0,0,6,0,0], "same array")
         self.assertCountEqual(rows[3], [3,2,0,0,0,0,0,5,0], "same array")
@@ -33,6 +39,7 @@ class TestFunctions(unittest.TestCase):
 
     def test_getBoxes(self):
         board = '901300000000250068068004000023060040007030010086010057619043072040597000070000400'
+        board = getBoardAsList(board)
         rows=getBoxes(board)
         self.assertCountEqual(rows[0], [9,0,1,0,0,0,0,6,8], "same array")
         self.assertCountEqual(rows[1], [3,0,0,2,5,0,0,0,4], "same array")
@@ -44,6 +51,7 @@ class TestFunctions(unittest.TestCase):
 
     def test_getBoardAsList(self):
         board = '901300000000250068068004000023060040007030010086010057619043072040597000070000400'
+        board = getBoardAsList(board)
         boardAsList=getBoardAsList(board)
         self.assertCountEqual(boardAsList, [9,0,1,3,0,0,0,0,0,0,0,0,2,5,0,0,6,8,0,6,8,0,0,4,0,0,0,0,2,3,0,6,0,0,4,0,0,0,7,0,3,0,0,1,0,0,8,6,0,1,0,0,5,7,6,1,9,0,4,3,0,7,2,0,4,0,5,9,7,0,0,0,0,7,0,0,0,0,4,0,0], "same array")
         
@@ -120,53 +128,66 @@ class TestFunctions(unittest.TestCase):
 
     def test_setNewValueInBoard(self):
         board = '901300000000250068068004000023060040007030010086010057619043072040597000070000400'
+        board = getBoardAsList(board)
         result = '951300000000250068068004000023060040007030010086010057619043072040597000070000400'
+        result = getBoardAsList(result)
         index = 1
         value = 5
         newboard=setNewValueInBoard(board,index,value)
-        self.assertEqual(newboard, result, "same row")
+        self.assertEqual(newboard, result, "setNewValueInBoard 1")
         
         board = '901300000000250068068004000023060040007030010086010057619043072040597000070000400'
+        board = getBoardAsList(board)
         result = '901380000000250068068004000023060040007030010086010057619043072040597000070000400'
+        result = getBoardAsList(result)
         index = 4
         value = 8
         newboard=setNewValueInBoard(board,index,value)
-        self.assertEqual(newboard, result, "same row")
+        self.assertEqual(newboard, result, "setNewValueInBoard 2")
 
         board = '901300000000250068068004000023060040007030010086010057619043072040597000070000400'
+        board = getBoardAsList(board)
         result = '101300000000250068068004000023060040007030010086010057619043072040597000070000400'
+        result = getBoardAsList(result)
         index = 0
         value = 1
 
         newboard=setNewValueInBoard(board,index,value)
-        self.assertEqual(newboard, result, "same row")
+        self.assertEqual(newboard, result, "setNewValueInBoard 3")
 
         board = '901300000000250068068004000023060040007030010086010057619043072040597000070000400'
+        board = getBoardAsList(board)
         result = '901300000000250068068004000023060040007030010086010057619043072040597000070000401'
+        result = getBoardAsList(result)
         index = 80
         value = 1
 
         newboard=setNewValueInBoard(board,index,value)
-        self.assertEqual(newboard, result, "same row")        
+        self.assertEqual(newboard, result, "setNewValueInBoard 4")        
 
     def test_singlePossibilityRule(self):
         board = '901300000000250068068004000023060040007030010086010057619043072040597000070000400'
-        
+        board = getBoardAsList(board)
         result = '951300020034250068068074000023060049007030010486010057619843072042597000070000400'
+        result = getBoardAsList(result)
         newboard=singlePossibilityRule(board)
         self.assertEqual(newboard, result, "singlePossibilityRule test 1")  
 
         result = '951380724734250068268074000023760849597030016486910057619843572042597000075020400'
+        result = getBoardAsList(result)
         newboard=singlePossibilityRule(newboard)
         self.assertEqual(newboard, result, "singlePossibilityRule test 2")
                 
         board = '951386724734259168268174935123765849597438216486912357619843572342597681875621493'
+        board = getBoardAsList(board)
         result = '951386724734259168268174935123765849597438216486912357619843572342597681875621493'
+        result = getBoardAsList(result)
         newboard=singlePossibilityRule(board)
         self.assertEqual(newboard, result, "singlePossibilityRule test 3") 
 
     def test_getOptionsByIndex(self):
         board = '203000700176542938008000200325000897701050426004200513002407189009020674407901352'
+        board = getBoardAsList(board)
         index = 7
         options = getOptionsByIndex(board,index)
         self.assertEqual(options, [4, 6], "getOptionsByIndex test 1") 
@@ -174,25 +195,30 @@ class TestFunctions(unittest.TestCase):
 
     def test_getAllEmptyFromBoxId(self):
         board = '203000700176542938008000200325000897701050426004200513002407189009020674407901352'
+        board = getBoardAsList(board)
         index = 6
         empties = getAllEmptyFromBoxId(board,index)
         self.assertEqual(empties, [54, 55, 63, 64, 73], "getAllEmptyFromBoxId test 1") 
 
     def test_getAllEmptyFromRowId(self):
         board = '203000700176542938008000200325000897701050426004200513002407189009020674407901352'
+        board = getBoardAsList(board)
         index = 0
         empties = getAllEmptyFromRowId(board,index)
         self.assertEqual(empties, [1, 3, 4, 5, 7, 8], "getAllEmptyFromRowId test 1") 
 
     def test_getAllEmptyFromColumnId(self):
         board = '203000700176542938008000200325000897701050426004200513002407189009020674407901352'
+        board = getBoardAsList(board)
         index = 0
         empties = getAllEmptyFromColumnId(board,index)
         self.assertEqual(empties, [18, 45, 54, 63], "getAllEmptyFromColumnId test 1") 
 
     def test_HiddenSingle(self):
         board = '203000700176542938008000200325000897701050426004200513002407189009020674407901352'
+        board = getBoardAsList(board)
         result = '203000700176542938008700200325004897701050426004270513002407189019025674407901352'
+        result = getBoardAsList(result)
         afterSingle = hiddenSingle(board)
         self.assertEqual(afterSingle, result, "HiddenSingle test 1") 
 
@@ -200,18 +226,22 @@ class TestFunctions(unittest.TestCase):
 
     def test_isBoardPossible(self):
         board = '203000700176542938008000200325000897701050426004200513002407189009020674407901352'
+        board = getBoardAsList(board)
         self.assertEqual(isBoardPossible(board), True, "isBoardPossible test 1") 
 
         # Same box
         board = '030600040943075000600038092050000000800006070000000438380024000004000320070009084'
+        board = getBoardAsList(board)
         self.assertEqual(isBoardPossible(board), False, "isBoardPossible test 2") 
 
         # Same Row
         board = '030600040940075700600038092050000000800006070000000438380024000004000320070009084'
+        board = getBoardAsList(board)
         self.assertEqual(isBoardPossible(board), False, "isBoardPossible test 3")
 
         # Same Column
         board = '030600040940075000600038092050000000830006070000000438380024000004000320070009084'
+        board = getBoardAsList(board)
         self.assertEqual(isBoardPossible(board), False, "isBoardPossible test 4") 
 
 
