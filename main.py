@@ -2,6 +2,7 @@
 # export, include the string into the constructor
 
 from solver import *
+import timeit
 
 # Empty Board
 #board = '000000000000000000000000000000000000000000000000000000000000000000000000000000000'
@@ -24,4 +25,8 @@ board = fullHiddenSingle(board)
 print(board)
 
 # Prints Solved board
+start = timeit.default_timer()
 solve(board)
+stop = timeit.default_timer()
+        
+print("Time: ", stop - start)
