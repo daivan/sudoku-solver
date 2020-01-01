@@ -29,25 +29,25 @@ board = getBoardAsList(board)
 #print(next(x for x in range(100) if x==0))
 
 # Temp optimizer
-start = timeit.default_timer()
-for i in range(1,100000):
-    getBoxes(board)
-stop = timeit.default_timer()
-print("Time: ", stop - start)
+#start = timeit.default_timer()
+#for i in range(1,1000000):
+#    getBoxByIndex(9)
+#stop = timeit.default_timer()
+#print("Time: ", stop - start)
 
 
 # Try some simple sudoku rules first to clear some easy 0s
-#board = fullSinglePossibilityRule(board)
-#board = fullHiddenSingle(board)
+board = fullSinglePossibilityRule(board)
+board = fullHiddenSingle(board)
 
 # Print unsolved board
-#print(board)
+print(board)
 
 
 
 # Prints Solved board
-#start = timeit.default_timer()
-#solve(board)
-#stop = timeit.default_timer()
+start = timeit.default_timer()
+solve(board)
+stop = timeit.default_timer()
         
-#print("Time: ", stop - start)
+print("Time: ", stop - start)
