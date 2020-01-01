@@ -19,22 +19,17 @@ board = '00000000500946000070300540950007000010000605320600800006001703007105000
 
 board = getBoardAsList(board)
 
-start = timeit.default_timer()
-for i in range(1,1000):
-    isBoardPossible(board)
-stop = timeit.default_timer()
-print("Time: ", stop - start)
 
 # Try some simple sudoku rules first to clear some easy 0s
-#board = fullSinglePossibilityRule(board)
-#board = fullHiddenSingle(board)
+board = fullSinglePossibilityRule(board)
+board = fullHiddenSingle(board)
 
 # Print unsolved board
-#print(board)
+print(board)
 
 # Prints Solved board
-#start = timeit.default_timer()
-#solve(board)
-#stop = timeit.default_timer()
+start = timeit.default_timer()
+solve(board)
+stop = timeit.default_timer()
         
-#print("Time: ", stop - start)
+print("Time: ", stop - start)

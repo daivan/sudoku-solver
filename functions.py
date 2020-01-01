@@ -300,7 +300,7 @@ def isBoardPossible(board):
 
 def isBoardComplete(board):
 
-    if isBoardPossible(board) and getNumberOfEmpties(board) == 0:
+    if 0 not in board and isBoardPossible(board):
         return True
     return False
 
