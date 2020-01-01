@@ -1,9 +1,9 @@
 def getNumberOfEmpties(boardAsString):
     counter = 0
     for c in boardAsString:
-        if c=='0':
+        if c==0:
             counter+=1
-    return int(counter)
+    return counter
 
 def getRows(boardAsString):
     rows = []
@@ -145,8 +145,9 @@ def getOptionsByIndex(board, index):
 
 def setNewValueInBoard(board, index, value):
     
-    output = board[:index] + str(value) + board[index+1:]
-    return output
+    #output = board[:index] + str(value) + board[index+1:]
+    board[index] = value
+    return board
 
 def singlePossibilityRule(board):
     if getNumberOfEmpties(board)==0:
@@ -185,7 +186,7 @@ def fullSinglePossibilityRule(board):
 def getAllEmptyFromBoxId(board, id):
     boxes=[]
     for index,n in enumerate(board):
-        if n=='0' and getBoxByIndex(index)==id:
+        if n==0 and getBoxByIndex(index)==id:
             boxes.append(index)
 
     return boxes
@@ -193,7 +194,7 @@ def getAllEmptyFromBoxId(board, id):
 def getAllEmptyFromRowId(board, id):
     rows=[]
     for index,n in enumerate(board):
-        if n=='0' and getRowByIndex(index)==id:
+        if n==0 and getRowByIndex(index)==id:
             rows.append(index)
 
     return rows
@@ -201,7 +202,7 @@ def getAllEmptyFromRowId(board, id):
 def getAllEmptyFromColumnId(board, id):
     columns=[]
     for index,n in enumerate(board):
-        if n=='0' and getColumnByIndex(index)==id:
+        if n==0 and getColumnByIndex(index)==id:
             columns.append(index)
 
     return columns
@@ -240,7 +241,7 @@ def hiddenSingle(board):
 
     for index,value in enumerate(BetterBoard):
         
-        if value == '0':
+        if value == 0:
             listOfIndexes = getAllEmptyFromBoxId(board,getBoxByIndex(index))
             newValue = checkForHiddenSingleByIndex(BetterBoard,index,listOfIndexes)
             if(newValue!=False):
@@ -276,7 +277,7 @@ def fullHiddenSingle(board):
 def isBoardPossible(board):
     
     for index, number in enumerate(board):
-        if number != '0':
+        if number != 0:
             # check if number already exists in box
             boxes=getBoxes(board)
             box_values=boxes[getBoxByIndex(index)]
@@ -304,7 +305,7 @@ def isBoardComplete(board):
 
 def findEmpty(board):
     for index,n in enumerate(board):
-        if n == '0':
+        if n == 0:
             return index
 
     return None
