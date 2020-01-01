@@ -37,7 +37,6 @@ board = fullSinglePossibilityRule(board)
 board = fullHiddenSingle(board)
 
 # Print unsolved board
-
 print(getBoardAsString(board))
 
 # Prints Solved board
