@@ -24,9 +24,9 @@ class TestFunctions(unittest.TestCase):
         board = '901300000000250068068004000023060040007030010086010057619043072040597000070000400'
         board = getBoardAsList(board)
         rows=getRows(board)
-        self.assertCountEqual(rows[0], [9,0,1,3,0,0,0,0,0], "same array")
-        self.assertCountEqual(rows[1], [0,0,0,2,5,0,0,6,8], "same array")
-        self.assertCountEqual(rows[8], [0,7,0,0,0,0,4,0,0], "same array")
+        self.assertCountEqual(rows[0], [9,0,1,3,0,0,0,0,0], "getRows 1")
+        self.assertCountEqual(rows[1], [0,0,0,2,5,0,0,6,8], "getRows 2")
+        self.assertCountEqual(rows[8], [0,7,0,0,0,0,4,0,0], "getRows 3")
 
 
     def test_getColumns(self):

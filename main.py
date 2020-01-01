@@ -3,6 +3,8 @@
 
 from solver import *
 import timeit
+# Just to profile
+import cProfile
 
 # Empty Board
 #board = '000000000000000000000000000000000000000000000000000000000000000000000000000000000'
@@ -19,17 +21,33 @@ board = '00000000500946000070300540950007000010000605320600800006001703007105000
 
 board = getBoardAsList(board)
 
+# Profiling
+#cProfile.run('solve(board)')
+
+#print(findEmpty(board))
+
+#print(next(x for x in range(100) if x==0))
+
+# Temp optimizer
+start = timeit.default_timer()
+for i in range(1,100000):
+    getBoxes(board)
+stop = timeit.default_timer()
+print("Time: ", stop - start)
+
 
 # Try some simple sudoku rules first to clear some easy 0s
-board = fullSinglePossibilityRule(board)
-board = fullHiddenSingle(board)
+#board = fullSinglePossibilityRule(board)
+#board = fullHiddenSingle(board)
 
 # Print unsolved board
-print(board)
+#print(board)
+
+
 
 # Prints Solved board
-start = timeit.default_timer()
-solve(board)
-stop = timeit.default_timer()
+#start = timeit.default_timer()
+#solve(board)
+#stop = timeit.default_timer()
         
-print("Time: ", stop - start)
+#print("Time: ", stop - start)

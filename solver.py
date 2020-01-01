@@ -2,7 +2,6 @@ from functions import *
 
 def solve(board):
 
-
     if isBoardComplete(board):
         print(board)
         return True
