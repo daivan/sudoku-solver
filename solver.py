@@ -5,10 +5,10 @@ def solve(board):
     if isBoardComplete(board):
         print(getBoardAsString(board))
         return True
-    else:
-        find = findEmpty(board)       
-
+    
+    find = findEmpty(board)           
     options = getOptionsByIndex(board, find)
+    
     for i in options:
         tempBoard = setNewValueInBoard(board, find, i)
         if(isBoardPossible(tempBoard)):

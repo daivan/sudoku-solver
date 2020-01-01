@@ -26,8 +26,8 @@ board = getBoardAsList(board)
 
 # Temp optimizer
 #start = timeit.default_timer()
-#for i in range(1,1000000):
-#    getBoxByIndex(9)
+#for i in range(1,10000):
+#    isBoardPossible(board)
 #stop = timeit.default_timer()
 #print("Time: ", stop - start)
 
