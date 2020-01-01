@@ -37,7 +37,8 @@ board = fullSinglePossibilityRule(board)
 board = fullHiddenSingle(board)
 
 # Print unsolved board
-print(board)
+
+print(getBoardAsString(board))
 
 # Prints Solved board
 start = timeit.default_timer()

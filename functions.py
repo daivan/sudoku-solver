@@ -1,28 +1,31 @@
-def getNumberOfEmpties(boardAsString):
+def getBoardAsString(boardAsList):
+    return ''.join(str(x) for x in boardAsList)
+
+def getNumberOfEmpties(boardAsList):
     counter = 0
-    for c in boardAsString:
+    for c in boardAsList:
         if c==0:
             counter+=1
     return counter
 
-def getRows(boardAsString):
+def getRows(boardAsList):
     rows = []
     for n in [0,9,18,27,36,45,54,63,72]:
-        rows.append([boardAsString[n+0],boardAsString[n+1],boardAsString[n+2],boardAsString[n+3],boardAsString[n+4],boardAsString[n+5],boardAsString[n+6],boardAsString[n+7],boardAsString[n+8]])
+        rows.append([boardAsList[n+0],boardAsList[n+1],boardAsList[n+2],boardAsList[n+3],boardAsList[n+4],boardAsList[n+5],boardAsList[n+6],boardAsList[n+7],boardAsList[n+8]])
     return rows
 
-def getColumns(boardAsString):
+def getColumns(boardAsList):
 
     columns = []
     for n in range(0,9):
-        columns.append([boardAsString[n+0],boardAsString[n+9],boardAsString[n+18],boardAsString[n+27],boardAsString[n+36],boardAsString[n+45],boardAsString[n+54],boardAsString[n+63],boardAsString[n+72]])
+        columns.append([boardAsList[n+0],boardAsList[n+9],boardAsList[n+18],boardAsList[n+27],boardAsList[n+36],boardAsList[n+45],boardAsList[n+54],boardAsList[n+63],boardAsList[n+72]])
     return columns
 
-def getBoxes(boardAsString):
+def getBoxes(boardAsList):
     
     boxes = []
     for n in [0,3,6,27,30,33,54,57,60]:
-        boxes.append([boardAsString[n+0],boardAsString[n+1],boardAsString[n+2],boardAsString[n+9],boardAsString[n+10],boardAsString[n+11],boardAsString[n+18],boardAsString[n+19],boardAsString[n+20]])
+        boxes.append([boardAsList[n+0],boardAsList[n+1],boardAsList[n+2],boardAsList[n+9],boardAsList[n+10],boardAsList[n+11],boardAsList[n+18],boardAsList[n+19],boardAsList[n+20]])
     return boxes
 
 def getBoardAsList(boardAsString):
@@ -163,7 +166,7 @@ def singlePossibilityRule(board):
 
     boxes=getBoxes(board)
 
-    boardAsList = getBoardAsList(board)
+    boardAsList = board
 
     BetterBoard = board
 

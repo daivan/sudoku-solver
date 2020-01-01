@@ -3,7 +3,7 @@ from functions import *
 def solve(board):
 
     if isBoardComplete(board):
-        print(board)
+        print(getBoardAsString(board))
         return True
     else:
         find = findEmpty(board)       
